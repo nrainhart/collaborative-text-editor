@@ -18,7 +18,10 @@ import {
 import { $getNearestNodeOfType, mergeRegister } from "@lexical/utils";
 import { $isHeadingNode } from "@lexical/rich-text";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import { Box, Button } from "@chakra-ui/react";
+import { Box, Button as CharkraButton } from "@chakra-ui/react";
+import { toolbar } from "./theme";
+import { icons } from "./icons";
+import RTEBoldIcon from "./icons/BoldIcon";
 
 const IS_APPLE = /Mac|iPod|iPhone|iPad/.test(navigator.platform);
 
@@ -27,10 +30,15 @@ const HOTKEY_PREFIX = IS_APPLE
   ? HOTKEY_PREFIX_SHORT
   : `${HOTKEY_PREFIX_SHORT}+`;
 
+function Button({ iconName, ...rest }) {
+  const Icon = iconName ? icons[iconName] : null;
+  return <CharkraButton leftIcon={<Icon />} {...rest} />;
+}
+
 export function BoldButton({ isActive, onClick }) {
   return (
     <Button
-      iconName="rte-bold"
+      iconName="bold"
       title={`Bold (${HOTKEY_PREFIX}B)`}
       aria-label={`Format text as bold. Shortcut: ${HOTKEY_PREFIX}B`}
       isActive={isActive}
@@ -42,7 +50,7 @@ export function BoldButton({ isActive, onClick }) {
 export function ItalicButton({ isActive, onClick }) {
   return (
     <Button
-      iconName="rte-italic"
+      iconName="italic"
       isActive={isActive}
       title={`Italic (${HOTKEY_PREFIX}I)`}
       aria-label={`Format text as italic. Shortcut: ${HOTKEY_PREFIX}I`}
@@ -54,7 +62,7 @@ export function ItalicButton({ isActive, onClick }) {
 export function StrikethroughButton({ isActive, onClick }) {
   return (
     <Button
-      iconName="rte-strikethrough"
+      iconName="strikethrough"
       title={`Strike through (${HOTKEY_PREFIX_SHORT}+Shift+X)`}
       aria-label={`Format text as strike through. Shortcut: ${HOTKEY_PREFIX_SHORT}+Shift+X`}
       isActive={isActive}
@@ -77,7 +85,7 @@ export function BulletListButton({ isDisabled, blockType }) {
 
   return (
     <Button
-      iconName="rte-bullet-list"
+      iconName="bullet-list"
       title="Format selection as bullet list"
       aria-label="Format selection as bullet list"
       isActive={isActive}
@@ -101,7 +109,7 @@ export function OrderedListButton({ isDisabled, blockType }) {
 
   return (
     <Button
-      iconName="rte-ordered-list"
+      iconName="ordered-list"
       title="Format selection as ordered list"
       aria-label="Format selection as ordered list"
       isActive={isActive}
@@ -183,7 +191,7 @@ export default function FixedBottomToolbarPlugin() {
   }, [editor, updateToolbar]);
 
   return (
-    <Box className={"editor-toolbar"} p="sp1" pt="sp0" display="flex">
+    <Box className={toolbar} p="sp1" pt="sp0" display="flex">
       <BoldButton
         isActive={isBold}
         onClick={() =>

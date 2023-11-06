@@ -11,6 +11,8 @@ const fontWeights = {
   semibold: 600,
 };
 
+export const toolbar = "editor-toolbar";
+export const placeholder = "editor-placeholder";
 const paragraph = "editor-text-paragraph";
 const bold = "editor-text-bold";
 const italic = "editor-text-italic";
