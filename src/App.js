@@ -21,6 +21,11 @@ import AutoLinkPlugin from "./AutoLinkPlugin";
 import FixedBottomToolbarPlugin from "./FixedBottomToolbarPlugin";
 import { Box, ChakraProvider, Heading } from "@chakra-ui/react";
 import { baseStyles, theme } from "./theme";
+import {
+  adjectives,
+  animals,
+  uniqueNamesGenerator,
+} from "unique-names-generator";
 
 const initialConfig = {
   namespace: "",
@@ -38,17 +43,24 @@ const initialConfig = {
 };
 
 const randomId = () => Math.floor(Math.random() * 100_000).toString();
+const randomUsername = () =>
+  uniqueNamesGenerator({
+    dictionaries: [adjectives, animals],
+    separator: " ",
+    length: 2,
+    style: "capital",
+  });
 
 const url = new URL(window.location.href);
 const searchParams = url.searchParams;
-const roomId = searchParams.get("roomId");
-const username = searchParams.get("username");
+const roomId = searchParams.get("roomId") || "default-room-id";
+const username = searchParams.get("username") || randomUsername();
 
 const collaborativeRoom = {
-  id: roomId || "default-room-id",
+  id: roomId,
   serverUrl: "ws://localhost:8787/chat",
   userId: randomId(),
-  username: username || "Nico",
+  username,
 };
 
 /**
