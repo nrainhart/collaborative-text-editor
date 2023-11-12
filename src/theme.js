@@ -63,6 +63,11 @@ const baseText = {
 };
 
 export const baseStyles = {
+  border: "1px solid",
+  borderColor: "#BFC7D9",
+  borderRadius: "4px",
+  padding: "8px",
+
   "> *": { outline: "none" },
 
   [`.${paragraph}`]: baseText,

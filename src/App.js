@@ -35,6 +35,7 @@ const initialConfig = {
     CodeNode,
   ],
 };
+
 const collaborativeRoom = {
   id: "some-id",
   serverUrl: "ws://localhost:8787/chat",
@@ -50,15 +51,10 @@ const collaborativeRoom = {
 
 const App = () => (
   <ChakraProvider>
-    <Heading as="h1">10Pi-Notes 🌲</Heading>
-    <Box
-      css={baseStyles}
-      style={{
-        border: "1px solid",
-        borderColor: "#BFC7D9",
-        borderRadius: "4px",
-      }}
-    >
+    <Heading as="h1" mb="16px">
+      10Pi-Notes 🌲
+    </Heading>
+    <Box css={baseStyles}>
       <LexicalComposer
         initialConfig={{
           ...initialConfig,
