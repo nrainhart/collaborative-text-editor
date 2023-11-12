@@ -37,11 +37,18 @@ const initialConfig = {
   ],
 };
 
+const randomId = () => Math.floor(Math.random() * 100_000).toString();
+
+const url = new URL(window.location.href);
+const searchParams = url.searchParams;
+const roomId = searchParams.get("roomId");
+const username = searchParams.get("username");
+
 const collaborativeRoom = {
-  id: "some-id",
+  id: roomId || "default-room-id",
   serverUrl: "ws://localhost:8787/chat",
-  userId: "some-user-id",
-  username: "Nico",
+  userId: randomId(),
+  username: username || "Nico",
 };
 
 /**
