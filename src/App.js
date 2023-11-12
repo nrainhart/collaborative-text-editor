@@ -16,6 +16,7 @@ import { ListItemNode, ListNode } from "@lexical/list";
 import { AutoLinkNode, LinkNode } from "@lexical/link";
 import { CodeNode } from "@lexical/code";
 import { TRANSFORMERS } from "@lexical/markdown";
+import AutoFocusPlugin from "./AutoFocusPlugin";
 import AutoLinkPlugin from "./AutoLinkPlugin";
 import FixedBottomToolbarPlugin from "./FixedBottomToolbarPlugin";
 import { Box, ChakraProvider, Heading } from "@chakra-ui/react";
@@ -90,6 +91,7 @@ const App = () => (
         <TabIndentationPlugin />
         <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
         <FixedBottomToolbarPlugin />
+        <AutoFocusPlugin />
       </LexicalComposer>
     </Box>
   </ChakraProvider>
