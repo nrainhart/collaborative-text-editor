@@ -129,4 +129,8 @@ export const baseStyles = {
     textDecoration: "underline",
     cursor: "pointer",
   },
+
+  [`.${toolbar}`]: {
+    paddingTop: "8px",
+  },
 };

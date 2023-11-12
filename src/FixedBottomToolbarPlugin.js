@@ -21,7 +21,6 @@ import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext
 import { Box, Button as CharkraButton } from "@chakra-ui/react";
 import { toolbar } from "./theme";
 import { icons } from "./icons";
-import RTEBoldIcon from "./icons/BoldIcon";
 
 const IS_APPLE = /Mac|iPod|iPhone|iPad/.test(navigator.platform);
 
@@ -32,7 +31,17 @@ const HOTKEY_PREFIX = IS_APPLE
 
 function Button({ iconName, ...rest }) {
   const Icon = iconName ? icons[iconName] : null;
-  return <CharkraButton leftIcon={<Icon />} {...rest} />;
+  return (
+    <CharkraButton
+      leftIcon={<Icon />}
+      paddingRight="0.25rem"
+      size="sm"
+      marginRight="4px"
+      height="24px"
+      width="24px"
+      {...rest}
+    />
+  );
 }
 
 export function BoldButton({ isActive, onClick }) {
@@ -191,7 +200,7 @@ export default function FixedBottomToolbarPlugin() {
   }, [editor, updateToolbar]);
 
   return (
-    <Box className={toolbar} p="sp1" pt="sp0" display="flex">
+    <Box className={toolbar}>
       <BoldButton
         isActive={isBold}
         onClick={() =>
