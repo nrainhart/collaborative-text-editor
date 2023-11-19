@@ -1,5 +1,5 @@
 {
-  "name": "text-editor",
+  "name": "collaborative-text-editor",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
@@ -29,11 +29,17 @@
     "y-websocket": "1.3.16",
     "yjs": "13.6.8"
   },
+  "devDependencies": {
+    "wrangler": "^3.16.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "pages:dev": "wrangler pages dev --compatibility-date=2023-10-30 --port 3000 -- npm start",
+    "pages:deploy": "npm run build && wrangler pages deploy ./build"
+
   },
   "browserslist": [
     ">0.2%",

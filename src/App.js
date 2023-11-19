@@ -27,6 +27,9 @@ import {
   uniqueNamesGenerator,
 } from "unique-names-generator";
 
+// const WS_SERVER_URL = "ws://localhost:8787/chat";
+const WS_SERVER_URL = "wss://omniknight.10pines-labs.workers.dev/chat";
+
 const initialConfig = {
   namespace: "",
   theme,
@@ -58,7 +61,7 @@ const username = searchParams.get("username") || randomUsername();
 
 const collaborativeRoom = {
   id: roomId,
-  serverUrl: "ws://localhost:8787/chat",
+  serverUrl: WS_SERVER_URL,
   userId: randomId(),
   username,
 };
