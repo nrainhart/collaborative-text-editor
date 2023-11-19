@@ -66,12 +66,6 @@ const collaborativeRoom = {
   username,
 };
 
-/**
- * TODO:
- *  - style editor
- *  - serve React site from Cloudflare Worker
- */
-
 const App = () => (
   <ChakraProvider>
     <Heading as="h1" mb="16px">
