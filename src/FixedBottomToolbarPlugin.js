@@ -18,7 +18,7 @@ import {
 import { $getNearestNodeOfType, mergeRegister } from "@lexical/utils";
 import { $isHeadingNode } from "@lexical/rich-text";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import { Box, Button as CharkraButton } from "@chakra-ui/react";
+import { Box, IconButton } from "@chakra-ui/react";
 import { toolbar } from "./theme";
 import { icons } from "./icons";
 
@@ -32,13 +32,12 @@ const HOTKEY_PREFIX = IS_APPLE
 function Button({ iconName, ...rest }) {
   const Icon = iconName ? icons[iconName] : null;
   return (
-    <CharkraButton
-      leftIcon={<Icon />}
-      paddingRight="0.25rem"
-      size="sm"
-      marginRight="4px"
-      height="24px"
-      width="24px"
+    <IconButton
+      icon={<Icon />}
+      size="md"
+      marginRight="6px"
+      height="36px"
+      width="36px"
       {...rest}
     />
   );
